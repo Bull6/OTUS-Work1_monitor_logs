@@ -1,5 +1,5 @@
 import pandas as pd
-from statistics import mean, median
+
 
 # Функция для ручного парсинга логов
 def parse_log_line(line):
@@ -56,15 +56,13 @@ def calculate_statistics(log_file):
     if df.empty:
         return None
     
-    request_times = df['request_time'].tolist()
-    
-    avg_time = mean(request_times)
-    median_time = median(request_times)
+    avg_time = df['request_time'].mean()
+    median_time = df['request_time'].median()
     
     return {
         'average_response_time': avg_time,
         'median_response_time': median_time,
-        'total_requests': len(request_times)
+        'total_requests': len(df['request_time'].tolist())
     }
 
 def generate_report(stats):
