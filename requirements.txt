@@ -1,0 +1,4 @@
+pandas
+watchdog
+pytest
+pytest-cov
